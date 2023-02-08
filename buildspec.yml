@@ -16,8 +16,8 @@ phases:
       - export COMMIT_INFO_SHA="$(git log -1 --pretty=%H)"
       - export COMMIT_INFO_REMOTE="$(git config --get remote.origin.url)"
       - npm ci
-      # - echo "install cypress dependencies..."
-      # - npm install -g wait-on
+      - echo "install cypress dependencies..."
+      - npm install -g wait-on
       # - apt-get update
       # - apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
   pre_build:
@@ -28,7 +28,8 @@ phases:
   build:
     commands:
       - npm run start & wait-on http://localhost:8080
-      - npx cypress run -spec "cypress/e2e/1-getting-started/*.cy.js"
+      - npx cypress run -spec "cypress/e2e/1-getting-started/*.cy.js" --browser chrome
+
 # TODO - add post-build commands and then implement reports
 # see mdc-screener-web-v2 package-scripts.js
 # reports:
