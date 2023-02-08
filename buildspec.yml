@@ -25,5 +25,5 @@ phases:
       - npm run cy:info
   build:
     commands:
-      - npm run start
+      - npm run start &
       - npx cypress run
