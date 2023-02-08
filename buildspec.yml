@@ -28,7 +28,7 @@ phases:
   build:
     commands:
       - npm run start & wait-on http://localhost:8080
-      - npx cypress run -spec "cypress/e2e/1-getting-started/*.cy.js" --browser chrome:stable
+      - npx cypress run --spec "cypress/e2e/1-getting-started/*.cy.js" --browser chrome:stable
 
 # TODO - add post-build commands and then implement reports
 # see mdc-screener-web-v2 package-scripts.js
