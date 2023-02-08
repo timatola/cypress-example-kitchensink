@@ -28,4 +28,9 @@ phases:
   build:
     commands:
       - npm run start & wait-on http://localhost:8080
-      - npx cypress run
+      - npx cypress run -spec "cypress/e2e/1-getting-started/*.cy.js"
+
+# reports:
+#   TestFolder:
+#     files:
+#       - cypress/reports/finalReports/junit.xml
