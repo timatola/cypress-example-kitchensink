@@ -34,6 +34,10 @@ phases:
       - CY_BROWSER=$(echo $CY_GROUP_SPEC | cut -d'|' -f2)
       - CY_SPEC=$(echo $CY_GROUP_SPEC | cut -d'|' -f3)
       - CY_CONFIG=$(echo $CY_GROUP_SPEC | cut -d'|' -f4)
+      - echo $CY_GROUP
+      - echo $CY_BROWSER
+      - echo $CY_SPEC
+      - echo $CY_CONFIG
       - npm ci
       - echo "install cypress dependencies..."
       - npm install -g wait-on
@@ -47,7 +51,7 @@ phases:
   build:
     commands:
       - npm run start & wait-on http://localhost:8080
-      - npx cypress run --parallel --record --browser chrome:stable --ci-build-id
+      - npx cypress run --parallel --record --key abc123 --browser chrome:stable --ci-build-id
         $CODEBUILD_INITIATOR --group "$CY_GROUP" --spec "$CY_SPEC" --config
         "$CY_CONFIG"
 
