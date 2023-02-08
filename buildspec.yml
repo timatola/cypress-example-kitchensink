@@ -25,5 +25,5 @@ phases:
       - npm run cy:info
   build:
     commands:
-      - npm run start &
+      - npm run start & wait-on http://localhost:8080
       - npx cypress run
