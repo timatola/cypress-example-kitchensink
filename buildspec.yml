@@ -47,7 +47,7 @@ phases:
   build:
     commands:
       - npm run start & wait-on http://localhost:8080
-      - npx cypress run --parallel --recording --browser chrome:stable --ci-build-id
+      - npx cypress run --parallel --record --browser chrome:stable --ci-build-id
         $CODEBUILD_INITIATOR --group "$CY_GROUP" --spec "$CY_SPEC" --config
         "$CY_CONFIG"
 
