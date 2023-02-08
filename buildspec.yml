@@ -53,7 +53,6 @@ phases:
       - npx cypress run --parallel --record --browser chrome:stable --ci-build-id
         $CODEBUILD_INITIATOR-$CODEBUILD_START_TIME #--group "$CY_GROUP" --spec "$CY_SPEC" --config "$CY_CONFIG"
 
-
       # - npx cypress run --browser chrome:stable
       # - npx cypress run --spec "cypress/e2e/1-getting-started/*.cy.js" --browser chrome:stable
       # - npx cypress run --spec "cypress/e2e/2-advanced-examples/*.cy.js" --browser chrome:stable
