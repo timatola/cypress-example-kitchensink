@@ -15,7 +15,7 @@ batch:
         # ...
         variables:
           CY_GROUP_SPEC:
-            - 'E2E - Chrome|chrome:stable|cypress/e2e/*'
+            - 'E2E - Chrome|chrome:stable|cypress/e2e/*/*.cy.js'
           WORKERS:
             - 1
             - 2
