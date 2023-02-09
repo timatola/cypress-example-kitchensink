@@ -1,6 +1,24 @@
 ## buildspec.yml
 version: 0.2
 
+batch:
+  fast-fail: false
+  # build-list:
+  #   - identifier: cypress-e2e-tests
+  #     env:
+  #       variables:
+  #         IMAGE: public.ecr.aws/cypress-io/cypress/browsers:node-16.18.1-chrome-109.0.5414.74-1-ff-109.0-edge-109.0.1518.52-1
+  build-matrix:
+    # ...
+    dynamic:
+      env:
+        # ...
+        variables:
+          CY_GROUP_SPEC:
+            - 'E2E - Chrome-2|chrome:stable|cypress/e2e/2-advanced-examples/*.cy.js'
+            - 'E2E - Chrome-3|chrome:stable|cypress/e2e/3-advanced-examples/*.cy.js'
+          WORKERS:
+            - 1
 phases:
   install:
     # runtime-versions:
@@ -15,6 +33,14 @@ phases:
       - export COMMIT_INFO_AUTHOR="$(git log -1 --pretty=%an)"
       - export COMMIT_INFO_SHA="$(git log -1 --pretty=%H)"
       - export COMMIT_INFO_REMOTE="$(git config --get remote.origin.url)"
+      - CY_GROUP=$(echo $CY_GROUP_SPEC | cut -d'|' -f1)
+      - CY_BROWSER=$(echo $CY_GROUP_SPEC | cut -d'|' -f2)
+      - CY_SPEC=$(echo $CY_GROUP_SPEC | cut -d'|' -f3)
+      - CY_CONFIG=$(echo $CY_GROUP_SPEC | cut -d'|' -f4)
+      - echo $CY_GROUP
+      - echo $CY_BROWSER
+      - echo $CY_SPEC
+      - echo $CY_CONFIG
       - npm ci
       - echo "install cypress dependencies..."
       - npm install -g wait-on
@@ -28,7 +54,10 @@ phases:
   build:
     commands:
       - npm run start & wait-on http://localhost:8080
-      - npx cypress run --browser chrome:stable
+      - npx cypress run --parallel --record --ci-build-id
+        $CODEBUILD_INITIATOR-$CODEBUILD_START_TIME --browser "$CY_BROWSER" #--group $CY_GROUP  --spec "$CY_SPEC" #--config "$CY_CONFIG"
+
+      # - npx cypress run --browser chrome:stable
       # - npx cypress run --spec "cypress/e2e/1-getting-started/*.cy.js" --browser chrome:stable
       # - npx cypress run --spec "cypress/e2e/2-advanced-examples/*.cy.js" --browser chrome:stable
 
