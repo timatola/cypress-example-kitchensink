@@ -1,44 +1,45 @@
 ## buildspec.yml
 version: 0.2
-batch:
-  fast-fail: false
-  build-list:
-    - identifier: build1
-      env:
-        variables:
-          BUILD_ID: build1
-          SPEC_DIR: "cypress/e2e/1-getting-started/*.cy.js"
-          # IMAGE: public.ecr.aws/cypress-io/cypress/browsers:node-16.18.1-chrome-109.0.5414.74-1-ff-109.0-edge-109.0.1518.52-1
-      ignore-failure: false
-    - identifier: build2
-      env:
-        variables:
-          BUILD_ID: build2
-          SPEC_DIR: "cypress/e2e/2-advanced-examples/*.cy.js"
-          # IMAGE: public.ecr.aws/cypress-io/cypress/browsers:node-16.18.1-chrome-109.0.5414.74-1-ff-109.0-edge-109.0.1518.52-1
-      ignore-failure: true
-
 # batch:
 #   fast-fail: false
-#   build-matrix:
-#     static:
-#       ignore-failure: false
-#       # env:
-#       #   type: LINUX_CONTAINER
-#       #   privileged-mode: true
-#       #   compute-type: BUILD_GENERAL1_MEDIUM
-#     dynamic:
+#   build-list:
+#     - identifier: build1
 #       env:
-#         # compute-type:
-#         #   - BUILD_GENERAL1_MEDIUM
-#         # image:
-#         #   - public.ecr.aws/cypress-io/cypress/browsers:node16.14.2-slim-chrome100-ff99-edge
 #         variables:
-#           SPEC_DIR:
-#             - "cypress/e2e/1-getting-started/*.cy.js cypress/e2e/2-advanced-examples/*.cy.js"
-#             # - "cypress/e2e/2-advanced-examples/*.cy.js"
-#           WORKERS:
-#             - 1
+#           BUILD_ID: build1
+#           SPEC_DIR: "cypress/e2e/1-getting-started/*.cy.js"
+#           # IMAGE: public.ecr.aws/cypress-io/cypress/browsers:node-16.18.1-chrome-109.0.5414.74-1-ff-109.0-edge-109.0.1518.52-1
+#       ignore-failure: false
+#     - identifier: build2
+#       env:
+#         variables:
+#           BUILD_ID: build2
+#           SPEC_DIR: "cypress/e2e/2-advanced-examples/*.cy.js"
+#           # IMAGE: public.ecr.aws/cypress-io/cypress/browsers:node-16.18.1-chrome-109.0.5414.74-1-ff-109.0-edge-109.0.1518.52-1
+#       ignore-failure: true
+
+batch:
+  fast-fail: false
+  build-matrix:
+    static:
+      ignore-failure: false
+      # env:
+      #   type: LINUX_CONTAINER
+      #   privileged-mode: true
+      #   compute-type: BUILD_GENERAL1_MEDIUM
+    dynamic:
+      env:
+        # compute-type:
+        #   - BUILD_GENERAL1_MEDIUM
+        # image:
+        #   - public.ecr.aws/cypress-io/cypress/browsers:node16.14.2-slim-chrome100-ff99-edge
+        variables:
+          SPEC_DIR:
+            - "cypress/e2e/1-getting-started/*.cy.js"
+            - "cypress/e2e/2-advanced-examples/*.cy.js"
+          # WORKERS:
+          #   - 1
+
 phases:
   install:
     # runtime-versions:
