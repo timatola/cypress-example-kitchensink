@@ -19,7 +19,6 @@ batch:
             - 'E2E - Chrome-3|chrome:stable|cypress/e2e/3-advanced-examples/*.cy.js'
           WORKERS:
             - 1
-            - 2
 phases:
   install:
     # runtime-versions:
