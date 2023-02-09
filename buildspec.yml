@@ -11,7 +11,6 @@ batch:
           IMAGE: public.ecr.aws/cypress-io/cypress/browsers:node-16.18.1-chrome-109.0.5414.74-1-ff-109.0-edge-109.0.1518.52-1
       ignore-failure: false
     - identifier: build2
-      buildspec: build2.yml
       env:
         variables:
           BUILD_ID: build2
