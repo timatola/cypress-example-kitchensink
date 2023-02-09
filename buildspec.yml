@@ -35,7 +35,7 @@ batch:
         #   - public.ecr.aws/cypress-io/cypress/browsers:node16.14.2-slim-chrome100-ff99-edge
         variables:
           SPEC_DIR:
-            - "cypress/e2e/1-getting-started/*.cy.js" "cypress/e2e/2-advanced-examples/*.cy.js"
+            - "cypress/e2e/1-getting-started/*.cy.js cypress/e2e/2-advanced-examples/*.cy.js"
             # - "cypress/e2e/2-advanced-examples/*.cy.js"
           WORKERS:
             - 1
