@@ -3,6 +3,11 @@ version: 0.2
 
 batch:
   fast-fail: false
+  build-list:
+    - identifier: cypress-e2e-tests
+      env:
+        variables:
+          IMAGE: public.ecr.aws/cypress-io/cypress/browsers:node-16.18.1-chrome-109.0.5414.74-1-ff-109.0-edge-109.0.1518.52-1
   build-matrix:
     # ...
     dynamic:
