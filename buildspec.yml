@@ -7,7 +7,8 @@ batch:
       env:
         variables:
           BUILD_ID: build1
-          SPEC_DIR: "cypress/e2e/1-getting-started/*.cy.js cypress/e2e/2-advanced-examples/*.cy.js"
+          # SPEC_DIR: "cypress/e2e/1-getting-started/*.cy.js"
+          SPEC_DIR: "cypress/e2e/1-getting-started/*.cy.js,cypress/e2e/2-advanced-examples/*.cy.js,cypress/e2e/3-advanced-examples/*.cy.js,cypress/e2e/4-advanced-examples/*.cy.js"
           # IMAGE: public.ecr.aws/cypress-io/cypress/browsers:node-16.18.1-chrome-109.0.5414.74-1-ff-109.0-edge-109.0.1518.52-1
       ignore-failure: false
     # - identifier: build2
@@ -15,6 +16,20 @@ batch:
     #     variables:
     #       BUILD_ID: build2
     #       SPEC_DIR: "cypress/e2e/2-advanced-examples/*.cy.js"
+    #       # IMAGE: public.ecr.aws/cypress-io/cypress/browsers:node-16.18.1-chrome-109.0.5414.74-1-ff-109.0-edge-109.0.1518.52-1
+    #   ignore-failure: true
+    # - identifier: build3
+    #   env:
+    #     variables:
+    #       BUILD_ID: build3
+    #       SPEC_DIR: "cypress/e2e/3-advanced-examples/*.cy.js"
+    #       # IMAGE: public.ecr.aws/cypress-io/cypress/browsers:node-16.18.1-chrome-109.0.5414.74-1-ff-109.0-edge-109.0.1518.52-1
+    #   ignore-failure: true
+    # - identifier: build4
+    #   env:
+    #     variables:
+    #       BUILD_ID: build4
+    #       SPEC_DIR: "cypress/e2e/4-advanced-examples/*.cy.js"
     #       # IMAGE: public.ecr.aws/cypress-io/cypress/browsers:node-16.18.1-chrome-109.0.5414.74-1-ff-109.0-edge-109.0.1518.52-1
     #   ignore-failure: true
 
@@ -54,7 +69,7 @@ phases:
       - export COMMIT_INFO_AUTHOR="$(git log -1 --pretty=%an)"
       - export COMMIT_INFO_SHA="$(git log -1 --pretty=%H)"
       - export COMMIT_INFO_REMOTE="$(git config --get remote.origin.url)"
-      - echo $SPEC_DIR
+      # - echo $SPEC_DIR
       - npm ci
       - echo "install cypress dependencies..."
       - npm install -g wait-on
