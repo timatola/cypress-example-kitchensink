@@ -33,29 +33,29 @@ version: 0.2
 #           # IMAGE: public.ecr.aws/cypress-io/cypress/browsers:node-16.18.1-chrome-109.0.5414.74-1-ff-109.0-edge-109.0.1518.52-1
 #       ignore-failure: true
 
-# batch:
-#   fast-fail: false
-#   build-matrix:
-#     static:
-#       ignore-failure: false
-#       # env:
-#       #   type: LINUX_CONTAINER
-#       #   privileged-mode: true
-#       #   compute-type: BUILD_GENERAL1_MEDIUM
-#     dynamic:
-#       env:
-#         # compute-type:
-#         #   - BUILD_GENERAL1_MEDIUM
-#         # image:
-#         #   - public.ecr.aws/cypress-io/cypress/browsers:node16.14.2-slim-chrome100-ff99-edge
-#         variables:
-#           SPEC_DIR:
-#             - "cypress/e2e/1-getting-started/*.cy.js"
-#             - "cypress/e2e/2-advanced-examples/*.cy.js"
-#             - "cypress/e2e/3-advanced-examples/*.cy.js"
-#             - "cypress/e2e/4-advanced-examples/*.cy.js"
-#           WORKERS:
-#             - 1
+batch:
+  fast-fail: false
+  build-matrix:
+    static:
+      ignore-failure: false
+      # env:
+      #   type: LINUX_CONTAINER
+      #   privileged-mode: true
+      #   compute-type: BUILD_GENERAL1_MEDIUM
+    dynamic:
+      env:
+        # compute-type:
+        #   - BUILD_GENERAL1_MEDIUM
+        # image:
+        #   - public.ecr.aws/cypress-io/cypress/browsers:node16.14.2-slim-chrome100-ff99-edge
+        variables:
+          SPEC_DIR:
+            - "cypress/e2e/1-getting-started/*.cy.js"
+            - "cypress/e2e/2-advanced-examples/*.cy.js"
+            - "cypress/e2e/3-advanced-examples/*.cy.js"
+            - "cypress/e2e/4-advanced-examples/*.cy.js"
+          WORKERS:
+            - 1
 
 phases:
   install:
@@ -71,6 +71,7 @@ phases:
       - export COMMIT_INFO_AUTHOR="$(git log -1 --pretty=%an)"
       - export COMMIT_INFO_SHA="$(git log -1 --pretty=%H)"
       - export COMMIT_INFO_REMOTE="$(git config --get remote.origin.url)"
+      # - echo $SPEC_DIR
       - npm ci
       - echo "install cypress dependencies..."
       - npm install -g wait-on
@@ -80,10 +81,14 @@ phases:
     commands:
       - npm run cy:verify
       - npm run cy:info
+      - npm run cy:cache:list
   build:
     commands:
       - npm run start & wait-on http://localhost:8080
-      - npx cypress run --browser chrome:stable
+      - echo $SPEC_DIR
+      - npx cypress run --browser chrome:stable --spec $SPEC_DIR
+      # - npx cypress run --spec "cypress/e2e/1-getting-started/*.cy.js" --browser chrome:stable
+      # - npx cypress run --spec "cypress/e2e/2-advanced-examples/*.cy.js" --browser chrome:stable
 
 # TODO - add post-build commands and then implement reports
 # see mdc-screener-web-v2 package-scripts.js
