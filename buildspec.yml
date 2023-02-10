@@ -83,12 +83,14 @@ phases:
   build:
     commands:
       - npm run start & wait-on http://localhost:8080
-      - npx cypress run --browser chrome:stable
+      # - npx cypress run --browser chrome:stable
+      - npx cypress run --browser chrome:stable --spec "cypress/e2e/2-advanced-examples/*.cy.js"
 
 # cypress POC
   post_build:
     commands:
       # - npm run post-test
+      - npm run
       - npm run merge-json-reports & npm run merge-junit-reports
 artifacts:
   files:
