@@ -138,10 +138,13 @@ phases:
       #     },
 
 reports:
-  TestFolder:
+  arn:aws:codebuild:us-east-1:011016601825:report-group/cypress-td-codebuild-docker-no-batch-TestFolder
+  # TestFolder:
     files:
-      - cypress/reports/finalReports/junit.xml
+      - "junit.xml"
+      - "cypress/reports/finalReports/junit.xml"
     file-format: JUNITXML
+    base-directory: "."
 ##################################
 
 
