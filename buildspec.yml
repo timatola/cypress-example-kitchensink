@@ -38,16 +38,16 @@ batch:
   build-matrix:
     static:
       ignore-failure: false
-      env:
-        type: LINUX_CONTAINER
-        privileged-mode: true
-        compute-type: BUILD_GENERAL1_MEDIUM
+      # env:
+      #   type: LINUX_CONTAINER
+      #   privileged-mode: true
+      #   compute-type: BUILD_GENERAL1_MEDIUM
     dynamic:
       env:
-        compute-type:
-          - BUILD_GENERAL1_MEDIUM
-        image:
-          - public.ecr.aws/cypress-io/cypress/browsers:node16.14.2-slim-chrome100-ff99-edge
+        # compute-type:
+        #   - BUILD_GENERAL1_MEDIUM
+        # image:
+        #   - public.ecr.aws/cypress-io/cypress/browsers:node16.14.2-slim-chrome100-ff99-edge
         variables:
           SPEC_DIR:
             - "cypress/e2e/1-getting-started/*.cy.js"
