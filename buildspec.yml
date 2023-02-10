@@ -112,39 +112,38 @@ phases:
 ##################################
 
 ##################################
+# # mdc-screen-v2
+#   post_build:
+#     commands:
+#       # - npx nps ${env}Report
+#       # - npx nps devReport
+#       - 'jrm ./cypress/reports/finalReports/junit.xml "./cypress/reports/source/junit/*.xml"'
+#       - "mochawesome-merge cypress/reports/source/json/*.json > cypress/reports/finalReports/report.json"
+#       # - "node testing/retry.js && cat cypress/reports/finalReports/report.json"
 
-# mdc-screen-v2
-  post_build:
-    commands:
-      # - npx nps ${env}Report
-      # - npx nps devReport
-      - 'jrm ./cypress/reports/finalReports/junit.xml "./cypress/reports/source/junit/*.xml"'
-      - "mochawesome-merge cypress/reports/source/json/*.json > cypress/reports/finalReports/report.json"
-      # - "node testing/retry.js && cat cypress/reports/finalReports/report.json"
+#       # devReport: {
+#       #       default: "nps afterTest.series uploadResultsToS3"
+#       #     }
 
-      # devReport: {
-      #       default: "nps afterTest.series uploadResultsToS3"
-      #     }
+#       #     afterTest: {
+#       #       mergeJunitReports:
+#       #         'jrm ./cypress/reports/finalReports/junit.xml "./cypress/reports/source/junit/*.xml"',
+#       #       mergeJsonReports:
+#       #         "mochawesome-merge cypress/reports/source/json/*.json > cypress/reports/finalReports/report.json",
+#       #       addRetryInJsonReport:
+#       #         "node testing/retry.js && cat cypress/reports/finalReports/report.json",
+#       #       series:
+#       #         "nps afterTest.mergeJunitReports afterTest.mergeJsonReports afterTest.addRetryInJsonReport",
+#       #     },
 
-      #     afterTest: {
-      #       mergeJunitReports:
-      #         'jrm ./cypress/reports/finalReports/junit.xml "./cypress/reports/source/junit/*.xml"',
-      #       mergeJsonReports:
-      #         "mochawesome-merge cypress/reports/source/json/*.json > cypress/reports/finalReports/report.json",
-      #       addRetryInJsonReport:
-      #         "node testing/retry.js && cat cypress/reports/finalReports/report.json",
-      #       series:
-      #         "nps afterTest.mergeJunitReports afterTest.mergeJsonReports afterTest.addRetryInJsonReport",
-      #     },
-
-reports:
-  # arn:aws:codebuild:us-east-1:011016601825:report-group/cypress-td-codebuild-docker-no-batch-TestFolder
-  TestFolder:
-    files:
-      - "junit.xml"
-      - "cypress/reports/finalReports/junit.xml"
-    file-format: JUNITXML
-    base-directory: "."
+# reports:
+#   # arn:aws:codebuild:us-east-1:011016601825:report-group/cypress-td-codebuild-docker-no-batch-TestFolder
+#   TestFolder:
+#     files:
+#       - "junit.xml"
+#       - "cypress/reports/finalReports/junit.xml"
+#     file-format: JUNITXML
+#     base-directory: "."
 ##################################
 
 
