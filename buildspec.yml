@@ -87,23 +87,61 @@ phases:
       # - npx cypress run --browser chrome:stable
       - npx cypress run --browser chrome:stable --spec "cypress/e2e/2-advanced-examples/*.cy.js"
 
+##################################
 # cypress POC
+#   post_build:
+#     commands:
+#       # - npm run post-test
+#       # - npm run
+#       # - npm run merge-json-reports & npm run merge-junit-reports
+#       - npm run merge-json-reports & npm run merge-junit-reports
+# #added to packag.json
+# #"merge-junit-reports": "jrm ./cypress/reports/finalReports/junit.xml \"./cypress/reports/source/junits/*.xml\"",
+# #    "merge-json-reports": "mochawesome-merge cypress/reports/source/Jsons/*.json > cypress/reports/finalReports/report.json",
+
+# artifacts:
+#   files:
+#     - cypress/reports/finalReports/*
+#   name: ${JOB_NAME}/${CODEBUILD_BUILD_NUMBER}
+# reports:
+#   reports:
+#     files: 
+#       - cypress/reports/finalReports/junit.xml
+#     file-format: JUNITXML
+
+##################################
+
+##################################
+
+# mdc-screen-v2
   post_build:
     commands:
-      # - npm run post-test
-      # - npm run
-      # - npm run merge-json-reports & npm run merge-junit-reports
-      - npm run merge-json-reports & npm run merge-junit-reports
-#added to packag.json
-#"merge-junit-reports": "jrm ./cypress/reports/finalReports/junit.xml \"./cypress/reports/source/junits/*.xml\"",
-#    "merge-json-reports": "mochawesome-merge cypress/reports/source/Jsons/*.json > cypress/reports/finalReports/report.json",
+      # - npx nps ${env}Report
+      # - npx nps devReport
+      - 'jrm ./cypress/reports/finalReports/junit.xml "./cypress/reports/source/junit/*.xml"'
+      - "mochawesome-merge cypress/reports/source/json/*.json > cypress/reports/finalReports/report.json"
+      # - "node testing/retry.js && cat cypress/reports/finalReports/report.json"
 
-artifacts:
-  files:
-    - cypress/reports/finalReports/*
-  name: ${JOB_NAME}/${CODEBUILD_BUILD_NUMBER}
+      # devReport: {
+      #       default: "nps afterTest.series uploadResultsToS3"
+      #     }
+
+      #     afterTest: {
+      #       mergeJunitReports:
+      #         'jrm ./cypress/reports/finalReports/junit.xml "./cypress/reports/source/junit/*.xml"',
+      #       mergeJsonReports:
+      #         "mochawesome-merge cypress/reports/source/json/*.json > cypress/reports/finalReports/report.json",
+      #       addRetryInJsonReport:
+      #         "node testing/retry.js && cat cypress/reports/finalReports/report.json",
+      #       series:
+      #         "nps afterTest.mergeJunitReports afterTest.mergeJsonReports afterTest.addRetryInJsonReport",
+      #     },
+
 reports:
-  reports:
-    files: 
+  TestFolder:
+    files:
       - cypress/reports/finalReports/junit.xml
     file-format: JUNITXML
+##################################
+
+
