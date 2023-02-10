@@ -85,9 +85,17 @@ phases:
       - npm run start & wait-on http://localhost:8080
       - npx cypress run --browser chrome:stable
 
-# TODO - add post-build commands and then implement reports
-# see mdc-screener-web-v2 package-scripts.js
-# reports:
-#   TestFolder:
-#     files:
-#       - cypress/reports/finalReports/junit.xml
+# cypress POC
+  post_build:
+    commands:
+      # - npm run post-test
+      - npm run merge-json-reports & npm run merge-junit-reports
+artifacts:
+  files:
+    - cypress/reports/finalReports/*
+  name: ${JOB_NAME}/${CODEBUILD_BUILD_NUMBER}
+reports:
+  reports:
+    files: 
+      - cypress/reports/finalReports/junit.xml
+    file-format: JUNITXML
