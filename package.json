@@ -42,7 +42,9 @@
     "local:run": "start-test 8080 cy:run",
     "local:run:record": "start-test 8080 cy:run:record",
     "ci:set-port": "node ./scripts/set-port",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "merge-junit-reports": "jrm ./cypress/reports/finalReports/junit.xml \"./cypress/reports/source/junits/*.xml\"",
+    "merge-json-reports": "mochawesome-merge cypress/reports/source/Jsons/*.json > cypress/reports/finalReports/report.json"
   },
   "repository": {
     "type": "git",

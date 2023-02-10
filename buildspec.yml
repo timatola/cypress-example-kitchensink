@@ -90,8 +90,13 @@ phases:
   post_build:
     commands:
       # - npm run post-test
-      - npm run
+      # - npm run
+      # - npm run merge-json-reports & npm run merge-junit-reports
       - npm run merge-json-reports & npm run merge-junit-reports
+#added to packag.json
+#"merge-junit-reports": "jrm ./cypress/reports/finalReports/junit.xml \"./cypress/reports/source/junits/*.xml\"",
+#    "merge-json-reports": "mochawesome-merge cypress/reports/source/Jsons/*.json > cypress/reports/finalReports/report.json",
+
 artifacts:
   files:
     - cypress/reports/finalReports/*
