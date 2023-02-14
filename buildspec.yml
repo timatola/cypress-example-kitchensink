@@ -37,7 +37,7 @@ phases:
       - npm run cy:verify
   build:
     commands:
-      - npm run start #& wait-on http://localhost:8080
+      - npm run start & #wait-on http://localhost:8080
       # - echo $SPEC_DIR
       # - npx cypress run --browser chrome --headless --spec $SPEC_DIR
       # - npx cypress run --spec "cypress/e2e/1-getting-started/*.cy.js" --browser chrome:stable
