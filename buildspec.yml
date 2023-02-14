@@ -11,8 +11,8 @@ batch:
           SPEC_DIR:
             - "cypress/e2e/1-getting-started/*.cy.js"
             - "cypress/e2e/2-advanced-examples/*.cy.js"
-            - "cypress/e2e/3-advanced-examples/*.cy.js"
-            - "cypress/e2e/4-advanced-examples/*.cy.js"
+            # - "cypress/e2e/3-advanced-examples/*.cy.js"
+            # - "cypress/e2e/4-advanced-examples/*.cy.js"
 
 phases:
   install:
@@ -38,10 +38,17 @@ phases:
   build:
     commands:
       - npm run start & wait-on http://localhost:8080
+      # - echo $SPEC_DIR
+      # - npx cypress run --browser chrome --headless --spec $SPEC_DIR
+      # - npx cypress run --spec "cypress/e2e/1-getting-started/*.cy.js" --browser chrome:stable
+      # - npx cypress run --spec "cypress/e2e/2-advanced-examples/*.cy.js" --browser chrome:stable
+  post_build:
+    commands:
       - echo $SPEC_DIR
       - npx cypress run --browser chrome --headless --spec $SPEC_DIR
       # - npx cypress run --spec "cypress/e2e/1-getting-started/*.cy.js" --browser chrome:stable
       # - npx cypress run --spec "cypress/e2e/2-advanced-examples/*.cy.js" --browser chrome:stable
+
 
 # TODO - add post-build commands and then implement reports
 # see mdc-screener-web-v2 package-scripts.js
