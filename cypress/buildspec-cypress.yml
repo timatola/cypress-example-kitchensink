@@ -12,7 +12,6 @@ phases:
       - export COMMIT_INFO_AUTHOR="$(git log -1 --pretty=%an)"
       - export COMMIT_INFO_SHA="$(git log -1 --pretty=%H)"
       - export COMMIT_INFO_REMOTE="$(git config --get remote.origin.url)"
-      # - echo $SPEC_DIR
       - npm ci
       # - echo "install cypress dependencies..."
       # - npm install -g wait-on
@@ -24,13 +23,13 @@ phases:
   build:
     commands:
       - npm run start & #wait-on http://localhost:8080
-      # - echo $SPEC_DIR
-      # - npx cypress run --browser chrome --headless --spec $SPEC_DIR
+      # - echo $TEST_DIR
+      # - npx cypress run --browser chrome --headless --spec $TEST_DIR
       # - npx cypress run --spec "cypress/e2e/1-getting-started/*.cy.js" --browser chrome:stable
       # - npx cypress run --spec "cypress/e2e/2-advanced-examples/*.cy.js" --browser chrome:stable
       - echo $REGION
-      - echo $SPEC_DIR
-      - npx cypress run --browser chrome --headless --spec $SPEC_DIR
+      - echo $TEST_DIR
+      - npx cypress run --browser chrome --headless --spec "cypress/e2e/$TEST_DIR/*.cy.js"
       # - npx cypress run --spec "cypress/e2e/1-getting-started/*.cy.js" --browser chrome:stable
       # - npx cypress run --spec "cypress/e2e/2-advanced-examples/*.cy.js" --browser chrome:stable
 
