@@ -4,11 +4,28 @@ version: 0.2
 batch:
   fast-fail: true
   build-list:
-    - identifier: UITesting
-      # env:
-      #   compute-type: BUILD_GENERAL1_MEDIUM
-      #   Image: aws/codebuild/standard:5.0
+    - identifier: "1_getting_started"
+      buildspec: cypress/buildspec-batch.yml
+      env:
+        variables:
+          SPEC_DIR: "cypress/e2e/1-getting-started/*.cy.js"
       ignore-failure: false
-      debub-session: false
-      buildspec: /cypress/buildspec-batch.yml
+    - identifier: "2_advanced_examples"
+      buildspec: cypress/buildspec-batch.yml
+      env:
+        variables:
+          SPEC_DIR: "cypress/e2e/2-advanced-examples/*.cy.js"
+      ignore-failure: true
+    - identifier: "3_advanced_examples"
+      buildspec: cypress/buildspec-batch.yml
+      env:
+        variables:
+          SPEC_DIR: "cypress/e2e/3-advanced-examples/*.cy.js"
+      ignore-failure: true
+    - identifier: "4_advanced_examples"
+      buildspec: cypress/buildspec-batch.yml
+      env:
+        variables:
+          SPEC_DIR: "cypress/e2e/4-advanced-examples/*.cy.js"
+      ignore-failure: true
 
