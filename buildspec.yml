@@ -1,18 +1,46 @@
 ## buildspec.yml
 version: 0.2
+# batch:
+#   fast-fail: false
+#   build-matrix:
+#     static:
+#       ignore-failure: false
+#     dynamic:
+#       env:
+#         variables:
+#           SPEC_DIR:
+#             - "cypress/e2e/1-getting-started/*.cy.js"
+#             - "cypress/e2e/2-advanced-examples/*.cy.js"
+#             # - "cypress/e2e/3-advanced-examples/*.cy.js"
+#             # - "cypress/e2e/4-advanced-examples/*.cy.js"
+
 batch:
   fast-fail: false
-  build-matrix:
-    static:
-      ignore-failure: false
-    dynamic:
+  build-list:
+    - identifier: "1-getting-started"
       env:
         variables:
-          SPEC_DIR:
-            - "cypress/e2e/1-getting-started/*.cy.js"
-            - "cypress/e2e/2-advanced-examples/*.cy.js"
-            # - "cypress/e2e/3-advanced-examples/*.cy.js"
-            # - "cypress/e2e/4-advanced-examples/*.cy.js"
+          BUILD_ID: build1
+          SPEC_DIR: "cypress/e2e/1-getting-started/*.cy.js"
+      ignore-failure: false
+    - identifier: "2-advanced-examples"
+      env:
+        variables:
+          BUILD_ID: build2
+          SPEC_DIR: "cypress/e2e/2-advanced-examples/*.cy.js"
+      ignore-failure: true
+    # - identifier: "3-advanced-examples"
+    #   env:
+    #     variables:
+    #       BUILD_ID: build3
+    #       SPEC_DIR: "cypress/e2e/3-advanced-examples/*.cy.js"
+    #   ignore-failure: true
+    # - identifier: "4-advanced-examples"
+    #   env:
+    #     variables:
+    #       BUILD_ID: build4
+    #       SPEC_DIR: "cypress/e2e/4-advanced-examples/*.cy.js"
+    #   ignore-failure: true
 
 phases:
   install:
