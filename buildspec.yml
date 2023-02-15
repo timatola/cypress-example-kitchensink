@@ -1,14 +1,16 @@
 ## buildspec.yml
 version: 0.2
 
-batch:
-  fast-fail: true
-  build-list:
-    - identifier: UITesting
-      env:
-        compute-type: BUILD_GENERAL1_MEDIUM
-        Image: aws/codebuild/standard:5.0
-      ignore-failure: false
-      debub-session: false
-      buildspec: cypress/buildspec-batch.yml
+env:
+  buildspec: cypress/buildspec-batch.yml
+# batch:
+#   fast-fail: true
+#   build-list:
+#     - identifier: UITesting
+#       env:
+#         compute-type: BUILD_GENERAL1_MEDIUM
+#         Image: aws/codebuild/standard:5.0
+#       ignore-failure: false
+#       debub-session: false
+#       buildspec: cypress/buildspec-batch.yml
 
