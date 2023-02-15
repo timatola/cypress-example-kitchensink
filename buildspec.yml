@@ -6,7 +6,7 @@ batch:
     static:
       ignore-failure: false
     dynamic:
-      buildspec: cypress/buildspec-cypress.yml
+      buildspec: "cypress/buildspec-cypress.yml"
       env:
         variables:
           SPEC_DIR:
