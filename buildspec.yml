@@ -1,86 +1,11 @@
 ## buildspec.yml
 version: 0.2
+
 batch:
   fast-fail: false
-  build-matrix:
-    static:
+  build-list:
+    - identifier: UITesting
       ignore-failure: false
-    dynamic:
-      env:
-        variables:
-          SPEC_DIR:
-            - "cypress/e2e/1-getting-started/*.cy.js"
-            - "cypress/e2e/2-advanced-examples/*.cy.js"
-            - "cypress/e2e/3-advanced-examples/*.cy.js"
-            - "cypress/e2e/4-advanced-examples/*.cy.js"
-            # - "cypress/e2e/**/*.cy.js"
+      debub-session: false
+      buildspec: cypress/buildspec-batch.yml
 
-# batch:
-#   fast-fail: false
-#   build-list:
-#     # - identifier: "1_getting_started"
-#     #   env:
-#     #     variables:
-#     #       SPEC_DIR: "cypress/e2e/1-getting-started/*.cy.js"
-#     #   ignore-failure: false
-#     # - identifier: "2_advanced_examples"
-#     #   env:
-#     #     variables:
-#     #       SPEC_DIR: "cypress/e2e/2-advanced-examples/*.cy.js"
-#     #   ignore-failure: true
-#     # - identifier: "3_advanced_examples"
-#     #   env:
-#     #     variables:
-#     #       SPEC_DIR: "cypress/e2e/3-advanced-examples/*.cy.js"
-#     #   ignore-failure: true
-#     # - identifier: "4_advanced_examples"
-#     #   env:
-#     #     variables:
-#     #       SPEC_DIR: "cypress/e2e/4-advanced-examples/*.cy.js"
-#     #   ignore-failure: true
-#     - identifier: "all_tests"
-#       env:
-#         variables:
-#           SPEC_DIR: "cypress/e2e/**/*.cy.js"
-#       ignore-failure: false
-
-phases:
-  install:
-    commands:
-      # Set COMMIT_INFO variables to send Git specifics to Cypress Cloud when recording
-      # https://docs.cypress.io/guides/continuous-integration/introduction#Git-information
-      - export COMMIT_INFO_BRANCH="$(git rev-parse HEAD | xargs git name-rev |
-        cut -d' ' -f2 | sed 's/remotes\/origin\///g')"
-      - export COMMIT_INFO_MESSAGE="$(git log -1 --pretty=%B)"
-      - export COMMIT_INFO_EMAIL="$(git log -1 --pretty=%ae)"
-      - export COMMIT_INFO_AUTHOR="$(git log -1 --pretty=%an)"
-      - export COMMIT_INFO_SHA="$(git log -1 --pretty=%H)"
-      - export COMMIT_INFO_REMOTE="$(git config --get remote.origin.url)"
-      # - echo $SPEC_DIR
-      - npm ci
-      # - echo "install cypress dependencies..."
-      # - npm install -g wait-on
-      # - apt-get update
-      # - apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
-  pre_build:
-    commands:
-      - npm run cy:verify
-  build:
-    commands:
-      - npm run start & #wait-on http://localhost:8080
-      # - echo $SPEC_DIR
-      # - npx cypress run --browser chrome --headless --spec $SPEC_DIR
-      # - npx cypress run --spec "cypress/e2e/1-getting-started/*.cy.js" --browser chrome:stable
-      # - npx cypress run --spec "cypress/e2e/2-advanced-examples/*.cy.js" --browser chrome:stable
-      - echo $SPEC_DIR
-      - npx cypress run --browser chrome --headless --spec $SPEC_DIR
-      # - npx cypress run --spec "cypress/e2e/1-getting-started/*.cy.js" --browser chrome:stable
-      # - npx cypress run --spec "cypress/e2e/2-advanced-examples/*.cy.js" --browser chrome:stable
-
-
-# TODO - add post-build commands and then implement reports
-# see mdc-screener-web-v2 package-scripts.js
-# reports:
-#   TestFolder:
-#     files:
-#       - cypress/reports/finalReports/junit.xml
