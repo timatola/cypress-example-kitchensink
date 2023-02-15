@@ -16,11 +16,13 @@ batch:
             - "cypress/e2e/3-advanced-examples/*.cy.js"
             - "cypress/e2e/4-advanced-examples/*.cy.js"
             # - "cypress/e2e/**/*.cy.js"
-          REGION:
+          REGION-MAIN:
             - "main"
+          REGION-UE1:
             - "ue1"
-            # - "uw2"
-
+          REGION-UW2:
+            - "uw-2"
+ 
 # batch:
 #   fast-fail: true
 #   build-list:
