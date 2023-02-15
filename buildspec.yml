@@ -1,31 +1,50 @@
 ## buildspec.yml
 version: 0.2
-
 batch:
-  fast-fail: true
-  build-list:
-    - identifier: "1_getting_started"
-      buildspec: cypress/buildspec-batch.yml
-      env:
-        variables:
-          SPEC_DIR: "cypress/e2e/1-getting-started/*.cy.js"
+  fast-fail: false
+  build-matrix:
+    static:
       ignore-failure: false
-    - identifier: "2_advanced_examples"
-      buildspec: cypress/buildspec-batch.yml
+    dynamic:
+      buildspec: cypress/buildspec-cypress.yml
       env:
         variables:
-          SPEC_DIR: "cypress/e2e/2-advanced-examples/*.cy.js"
-      ignore-failure: true
-    - identifier: "3_advanced_examples"
-      buildspec: cypress/buildspec-batch.yml
-      env:
-        variables:
-          SPEC_DIR: "cypress/e2e/3-advanced-examples/*.cy.js"
-      ignore-failure: true
-    - identifier: "4_advanced_examples"
-      buildspec: cypress/buildspec-batch.yml
-      env:
-        variables:
-          SPEC_DIR: "cypress/e2e/4-advanced-examples/*.cy.js"
-      ignore-failure: true
+          SPEC_DIR:
+            - "cypress/e2e/1-getting-started/*.cy.js"
+            - "cypress/e2e/2-advanced-examples/*.cy.js"
+            - "cypress/e2e/3-advanced-examples/*.cy.js"
+            - "cypress/e2e/4-advanced-examples/*.cy.js"
+            # - "cypress/e2e/**/*.cy.js"
+          REGION:
+            - "dev"
+            # - "dev-ue1"
+            # - "dev-uw2"
+
+# batch:
+#   fast-fail: true
+#   build-list:
+#     - identifier: "1_getting_started"
+#       buildspec: cypress/buildspec-ui.yml
+#       env:
+#         variables:
+#           SPEC_DIR: "cypress/e2e/1-getting-started/*.cy.js"
+#       ignore-failure: false
+#     - identifier: "2_advanced_examples"
+#       buildspec: cypress/buildspec-cypress.yml
+#       env:
+#         variables:
+#           SPEC_DIR: "cypress/e2e/2-advanced-examples/*.cy.js"
+#       ignore-failure: true
+#     - identifier: "3_advanced_examples"
+#       buildspec: cypress/buildspec-cypress.yml
+#       env:
+#         variables:
+#           SPEC_DIR: "cypress/e2e/3-advanced-examples/*.cy.js"
+#       ignore-failure: true
+#     - identifier: "4_advanced_examples"
+#       buildspec: cypress/buildspec-cypress.yml
+#       env:
+#         variables:
+#           SPEC_DIR: "cypress/e2e/4-advanced-examples/*.cy.js"
+#       ignore-failure: true
 
