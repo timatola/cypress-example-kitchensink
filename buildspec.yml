@@ -1,64 +1,64 @@
 ## buildspec.yml
 ############################
-# version: 0.2
-# batch:
-#   fast-fail: false
-#   build-matrix:
-#     static:
-#       ignore-failure: false
-#     dynamic:
-#       buildspec:
-#         - cypress/buildspec-ui.yml
-#       # env:
-#       #   compute-type: 
-#       #     - BUILD_GENERAL1_MEDIUM
-#       #   IMAGE: 
-#       #     - /aws/codebuild/standard:5.0
-#         variables:
-#           TEST_DIR:
-#             - "1-getting-started"
-#             - "2-advanced-examples"
-#             - "3-advanced-examples"
-#             - "4-advanced-examples"
-#             # - "**"
-#           # REGION:
-#           #   - "main"
-#           #   - "ue1"
-#           #   - "uw-2"
-
-############################
 version: 0.2
 batch:
   fast-fail: false
-  build-list:
-    - identifier: "1_getting_started"
-      buildspec: cypress/buildspec-ui.yml
-      env:
-        variables:
-          TEST_DIR: "1-getting-started"
+  build-matrix:
+    static:
       ignore-failure: false
-    - identifier: "2_advanced_examples"
-      buildspec: cypress/buildspec-ui.yml
-      env:
+    dynamic:
+      buildspec:
+        - cypress/buildspec-ui.yml
+      # env:
+      #   compute-type: 
+      #     - BUILD_GENERAL1_MEDIUM
+      #   IMAGE: 
+      #     - /aws/codebuild/standard:5.0
         variables:
-          TEST_DIR: "2-advanced-examples"
-      ignore-failure: true
-    - identifier: "3_advanced_examples"
-      buildspec: cypress/buildspec-ui.yml
-      env:
-        variables:
-          TEST_DIR: "3-advanced-examples"
-      ignore-failure: true
-    - identifier: "4_advanced_examples"
-      buildspec: cypress/buildspec-ui.yml
-      env:
-        variables:
-          TEST_DIR: "4-advanced-examples"
-      ignore-failure: true
-    # - identifier: "all-tests"
-    #   buildspec: cypress/buildspec-ui.yml
-    #   env:
-    #     variables:
-    #       TEST_DIR: "**"
-    #   ignore-failure: false
+          TEST_DIR:
+            - "1-getting-started"
+            - "2-advanced-examples"
+            - "3-advanced-examples"
+            - "4-advanced-examples"
+            # - "**"
+          # REGION:
+          #   - "main"
+          #   - "ue1"
+          #   - "uw-2"
+
+############################
+# version: 0.2
+# batch:
+#   fast-fail: false
+#   build-list:
+#     - identifier: "1_getting_started"
+#       buildspec: cypress/buildspec-ui.yml
+#       env:
+#         variables:
+#           TEST_DIR: "1-getting-started"
+#       ignore-failure: false
+#     - identifier: "2_advanced_examples"
+#       buildspec: cypress/buildspec-ui.yml
+#       env:
+#         variables:
+#           TEST_DIR: "2-advanced-examples"
+#       ignore-failure: true
+#     - identifier: "3_advanced_examples"
+#       buildspec: cypress/buildspec-ui.yml
+#       env:
+#         variables:
+#           TEST_DIR: "3-advanced-examples"
+#       ignore-failure: true
+#     - identifier: "4_advanced_examples"
+#       buildspec: cypress/buildspec-ui.yml
+#       env:
+#         variables:
+#           TEST_DIR: "4-advanced-examples"
+#       ignore-failure: true
+#     # - identifier: "all-tests"
+#     #   buildspec: cypress/buildspec-ui.yml
+#     #   env:
+#     #     variables:
+#     #       TEST_DIR: "**"
+#     #   ignore-failure: false
 
