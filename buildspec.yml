@@ -16,9 +16,9 @@ batch:
             - "cypress/e2e/4-advanced-examples/*.cy.js"
             # - "cypress/e2e/**/*.cy.js"
           REGION:
-            - "dev"
-            # - "dev-ue1"
-            # - "dev-uw2"
+            - "main"
+            # - "ue1"
+            # - "uw2"
 
 # batch:
 #   fast-fail: true
