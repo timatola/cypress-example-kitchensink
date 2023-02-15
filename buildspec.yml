@@ -17,25 +17,25 @@ version: 0.2
 batch:
   fast-fail: false
   build-list:
-    - identifier: "1-getting-started"
+    - identifier: "1_getting_started"
       env:
         variables:
           BUILD_ID: build1
           SPEC_DIR: "cypress/e2e/1-getting-started/*.cy.js"
       ignore-failure: false
-    - identifier: "2-advanced-examples"
+    - identifier: "2_advanced_examples"
       env:
         variables:
           BUILD_ID: build2
           SPEC_DIR: "cypress/e2e/2-advanced-examples/*.cy.js"
       ignore-failure: true
-    # - identifier: "3-advanced-examples"
+    # - identifier: "3_advanced_examples"
     #   env:
     #     variables:
     #       BUILD_ID: build3
     #       SPEC_DIR: "cypress/e2e/3-advanced-examples/*.cy.js"
     #   ignore-failure: true
-    # - identifier: "4-advanced-examples"
+    # - identifier: "4_advanced_examples"
     #   env:
     #     variables:
     #       BUILD_ID: build4
