@@ -9,11 +9,11 @@ batch:
       env:
         variables:
           SPEC_DIR:
-            # - "cypress/e2e/1-getting-started/*.cy.js"
-            # - "cypress/e2e/2-advanced-examples/*.cy.js"
-            # - "cypress/e2e/3-advanced-examples/*.cy.js"
-            # - "cypress/e2e/4-advanced-examples/*.cy.js"
-            - "cypress/e2e/**/*.cy.js"
+            - "cypress/e2e/1-getting-started/*.cy.js"
+            - "cypress/e2e/2-advanced-examples/*.cy.js"
+            - "cypress/e2e/3-advanced-examples/*.cy.js"
+            - "cypress/e2e/4-advanced-examples/*.cy.js"
+            # - "cypress/e2e/**/*.cy.js"
 
 # batch:
 #   fast-fail: false
