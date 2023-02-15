@@ -16,8 +16,8 @@ batch:
   build-matrix:
     static:
       ignore-failure: false
-    dynamic:
       env: buildspec: cypress/buildspec-batch.yml
+    # dynamic:
         # variables:
         #   SPEC_DIR:
         #     - "cypress/e2e/1-getting-started/*.cy.js"
