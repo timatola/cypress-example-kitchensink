@@ -23,19 +23,8 @@ phases:
   build:
     commands:
       - npm run start & #wait-on http://localhost:8080
-      # - npx cypress run --browser chrome --headless --spec $TEST_DIR
-      # - npx cypress run --spec "cypress/e2e/1-getting-started/*.cy.js" --browser chrome:stable
-      # - npx cypress run --spec "cypress/e2e/2-advanced-examples/*.cy.js" --browser chrome:stable
       - echo ${TEST_DIR}
       - ls -alh cypress/e2e/${TEST_DIR}/*.cy.js
       - npx cypress run --browser chrome --headless --spec "cypress/e2e/${TEST_DIR}/*.cy.js"
       # - npx cypress run --spec "cypress/e2e/1-getting-started/*.cy.js" --browser chrome:stable
       # - npx cypress run --spec "cypress/e2e/2-advanced-examples/*.cy.js" --browser chrome:stable
-
-
-# TODO - add post-build commands and then implement reports
-# see mdc-screener-web-v2 package-scripts.js
-# reports:
-#   TestFolder:
-#     files:
-#       - cypress/reports/finalReports/junit.xml
