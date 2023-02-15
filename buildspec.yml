@@ -1,28 +1,14 @@
 ## buildspec.yml
 version: 0.2
 
-# batch:
-#   fast-fail: true
-#   build-list:
-#     - identifier: UITesting
-#       env:
-#         compute-type: BUILD_GENERAL1_MEDIUM
-#         Image: aws/codebuild/standard:5.0
-#       ignore-failure: false
-#       debub-session: false
-#       buildspec: cypress/buildspec-batch.yml
-
 batch:
-  build-matrix:
-    static:
+  fast-fail: true
+  build-list:
+    - identifier: UITesting
+      # env:
+      #   compute-type: BUILD_GENERAL1_MEDIUM
+      #   Image: aws/codebuild/standard:5.0
       ignore-failure: false
-      env: buildspec: cypress/buildspec-batch.yml
-    # dynamic:
-        # variables:
-        #   SPEC_DIR:
-        #     - "cypress/e2e/1-getting-started/*.cy.js"
-        #     - "cypress/e2e/2-advanced-examples/*.cy.js"
-        #     - "cypress/e2e/3-advanced-examples/*.cy.js"
-        #     - "cypress/e2e/4-advanced-examples/*.cy.js"
-        #     # - "cypress/e2e/**/*.cy.js"
+      debub-session: false
+      buildspec: cypress/buildspec-batch.yml
 
