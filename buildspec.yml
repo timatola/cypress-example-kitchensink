@@ -29,7 +29,7 @@
 ############################
 version: 0.2
 batch:
-  fast-fail: true
+  fast-fail: false
   build-list:
     - identifier: "1_getting_started"
       buildspec: cypress/buildspec-ui.yml
