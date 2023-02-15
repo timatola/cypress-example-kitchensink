@@ -10,5 +10,5 @@ batch:
       #   Image: aws/codebuild/standard:5.0
       ignore-failure: false
       debub-session: false
-      buildspec: cypress/buildspec-batch.yml
+      buildspec: /cypress/buildspec-batch.yml
 
