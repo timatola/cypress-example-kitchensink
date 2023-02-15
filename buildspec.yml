@@ -1,8 +1,6 @@
 ## buildspec.yml
 version: 0.2
 
-env:
-  buildspec: cypress/buildspec-batch.yml
 # batch:
 #   fast-fail: true
 #   build-list:
@@ -13,4 +11,18 @@ env:
 #       ignore-failure: false
 #       debub-session: false
 #       buildspec: cypress/buildspec-batch.yml
+
+batch:
+  build-matrix:
+    static:
+      ignore-failure: false
+    dynamic:
+      env: buildspec: cypress/buildspec-batch.yml
+        # variables:
+        #   SPEC_DIR:
+        #     - "cypress/e2e/1-getting-started/*.cy.js"
+        #     - "cypress/e2e/2-advanced-examples/*.cy.js"
+        #     - "cypress/e2e/3-advanced-examples/*.cy.js"
+        #     - "cypress/e2e/4-advanced-examples/*.cy.js"
+        #     # - "cypress/e2e/**/*.cy.js"
 
