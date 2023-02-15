@@ -9,11 +9,7 @@ batch:
     dynamic:
       buildspec:
         - cypress/buildspec-ui.yml
-      # env:
-      #   compute-type: 
-      #     - BUILD_GENERAL1_MEDIUM
-      #   IMAGE: 
-      #     - /aws/codebuild/standard:5.0
+      env:
         variables:
           TEST_DIR:
             - "1-getting-started"
