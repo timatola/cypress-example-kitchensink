@@ -16,11 +16,9 @@ batch:
             - "cypress/e2e/3-advanced-examples/*.cy.js"
             - "cypress/e2e/4-advanced-examples/*.cy.js"
             # - "cypress/e2e/**/*.cy.js"
-          REGION-MAIN:
-            - "main"
-          REGION-UE1:
-            - "ue1"
-          # REGION-UW2:
+          # REGION:
+          #   - "main"
+          #   - "ue1"
           #   - "uw-2"
  
 # batch:
