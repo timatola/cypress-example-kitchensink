@@ -20,13 +20,13 @@ batch:
     - identifier: "1_getting_started"
       env:
         variables:
-          BUILD_ID: build1
+          # BUILD_ID: build1
           SPEC_DIR: "cypress/e2e/1-getting-started/*.cy.js"
       ignore-failure: false
     - identifier: "2_advanced_examples"
       env:
         variables:
-          BUILD_ID: build2
+          # BUILD_ID: build2
           SPEC_DIR: "cypress/e2e/2-advanced-examples/*.cy.js"
       ignore-failure: true
     # - identifier: "3_advanced_examples"
