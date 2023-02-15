@@ -29,7 +29,7 @@ phases:
       # - npx cypress run --spec "cypress/e2e/1-getting-started/*.cy.js" --browser chrome:stable
       # - npx cypress run --spec "cypress/e2e/2-advanced-examples/*.cy.js" --browser chrome:stable
       - echo $SPEC_DIR
-      - npx cypress run --browser chrome --headless --spec $SPEC_DIR --group $SPEC_DIR
+      - npx cypress run --browser chrome --headless --spec $SPEC_DIR
       # - npx cypress run --spec "cypress/e2e/1-getting-started/*.cy.js" --browser chrome:stable
       # - npx cypress run --spec "cypress/e2e/2-advanced-examples/*.cy.js" --browser chrome:stable
 
