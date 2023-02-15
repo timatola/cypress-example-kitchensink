@@ -20,8 +20,8 @@ batch:
             - "main"
           REGION-UE1:
             - "ue1"
-          REGION-UW2:
-            - "uw-2"
+          # REGION-UW2:
+          #   - "uw-2"
  
 # batch:
 #   fast-fail: true
