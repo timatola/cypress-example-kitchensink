@@ -12,8 +12,9 @@ batch:
       env:
         variables:
           TEST_DIR:
-            - "{1-getting-started,2-advanced-examples}"
-            # - "2-advanced-examples"
+            # - "{1-getting-started,2-advanced-examples}"
+            - "1-getting-started"
+            - "2-advanced-examples"
             - "3-advanced-examples"
             - "4-advanced-examples"
             # - "**"
