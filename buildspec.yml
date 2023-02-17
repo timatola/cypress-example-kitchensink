@@ -1,6 +1,5 @@
 ## buildspec.yml
 ############################
-############################
 version: 0.2
 batch:
   fast-fail: false
