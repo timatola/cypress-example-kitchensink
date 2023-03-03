@@ -23,7 +23,7 @@ phases:
   build:
     commands:
       - npm run start & #wait-on http://localhost:8080
-      - export HNAME = hostname
+      - export HNAME="$(hostname)"
       - echo "name ${TEST_DIR} ${HNAME}"
       - ls cypress/e2e/${TEST_DIR}/*.cy.js
       - npx cypress run --browser chrome --headless --spec "cypress/e2e/${TEST_DIR}/*.cy.js"
