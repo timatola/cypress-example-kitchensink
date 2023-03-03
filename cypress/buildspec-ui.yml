@@ -23,6 +23,7 @@ phases:
   build:
     commands:
       - npm run start & #wait-on http://localhost:8080
+      - hostname
       - ls cypress/e2e/${TEST_DIR}/*.cy.js
       - npx cypress run --browser chrome --headless --spec "cypress/e2e/${TEST_DIR}/*.cy.js"
       # - npx cypress run --spec "cypress/e2e/1-getting-started/*.cy.js" --browser chrome:stable
