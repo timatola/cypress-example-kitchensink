@@ -10,6 +10,10 @@ batch:
       buildspec:
         - cypress/buildspec-ui.yml
       env:
+        compute-type:
+          - BUILD_GENERAL1_MEDIUM
+        image:
+          - aws/codebuild/standard:5.0
         variables:
           TEST_DIR:
             # - "{1-getting-started,2-advanced-examples}"
