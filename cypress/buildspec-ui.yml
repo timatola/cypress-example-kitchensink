@@ -23,8 +23,8 @@ phases:
   build:
     commands:
       - npm run start & #wait-on http://localhost:8080
-      # - export HNAME="$(hostname)"
-      - echo "name-test=${TEST_DIR} ${hostname}"
+      - export HNAME="$(hostname)"
+      - echo "name-test=${TEST_DIR} ${HNAME}"
       - ls cypress/e2e/${TEST_DIR}/*.cy.js
       - npx cypress run --browser chrome --headless --spec "cypress/e2e/${TEST_DIR}/*.cy.js"
       # - npx cypress run --spec "cypress/e2e/1-getting-started/*.cy.js" --browser chrome:stable
